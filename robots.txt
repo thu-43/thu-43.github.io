@@ -1,0 +1,4 @@
+User-agent:*
+Disallow:
+
+Sitemap: https://thu-43.github.io/sitemap.xml
