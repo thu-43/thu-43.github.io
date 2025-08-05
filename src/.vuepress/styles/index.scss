@@ -1,1 +1,264 @@
 // place your custom styles here
+
+/* ==============================
+   🎂 动态主题切换系统 🎂
+   根据倒计时状态切换生日主题
+   ============================== */
+
+/* 生日动画关键帧 */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-birthday {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 182, 193, 1);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ==============================
+   🌟 普通主题样式（默认）
+   ============================== */
+
+/* 普通主题背景 */
+.vp-blog-hero {
+  background: linear-gradient(135deg, 
+    rgba(52, 152, 219, 0.05) 0%,
+    rgba(74, 144, 226, 0.1) 25%,
+    rgba(155, 89, 182, 0.05) 50%,
+    rgba(142, 68, 173, 0.1) 75%,
+    rgba(52, 152, 219, 0.05) 100%
+  ) !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* 普通主题标题 */
+.vp-blog-hero-title {
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+  transition: all 0.5s ease;
+}
+
+/* 普通主题描述 */
+.vp-blog-hero-description {
+  color: #7f8c8d !important;
+  font-weight: 400 !important;
+  transition: all 0.5s ease;
+}
+
+/* 普通主题导航栏 */
+.navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease;
+}
+
+/* ==============================
+   🎂 生日主题样式（条件激活）
+   ============================== */
+
+/* 当body有birthday-mode类时激活生日主题 */
+body.birthday-mode {
+  
+  /* 生日主题背景渐变 */
+  .vp-blog-hero {
+    background: linear-gradient(135deg, 
+      rgba(255, 182, 193, 0.1) 0%,
+      rgba(255, 192, 203, 0.2) 25%,
+      rgba(255, 218, 185, 0.1) 50%,
+      rgba(255, 228, 225, 0.2) 75%,
+      rgba(255, 182, 193, 0.1) 100%
+    ) !important;
+  }
+
+  /* 生日彩带装饰 */
+  .vp-blog-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 10%, #ff6b9d 2px, transparent 3px),
+      radial-gradient(circle at 80% 20%, #ffa726 2px, transparent 3px),
+      radial-gradient(circle at 40% 30%, #e91e63 2px, transparent 3px),
+      radial-gradient(circle at 60% 40%, #ff9800 2px, transparent 3px),
+      radial-gradient(circle at 30% 60%, #ffb74d 2px, transparent 3px),
+      radial-gradient(circle at 70% 70%, #f06292 2px, transparent 3px),
+      radial-gradient(circle at 90% 80%, #ff7043 2px, transparent 3px),
+      radial-gradient(circle at 10% 90%, #ab47bc 2px, transparent 3px);
+    background-size: 100px 100px, 150px 150px, 120px 120px, 80px 80px, 
+                     110px 110px, 90px 90px, 130px 130px, 70px 70px;
+    animation: confetti-fall 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 生日蛋糕图标装饰 */
+  .vp-blog-hero::after {
+    content: '🎂🎈🎉🎁✨🌟🎊🎀';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: sparkle 3s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* 生日标题特效 */
+  .vp-blog-hero-title {
+    animation: bounce-birthday 2s ease-in-out infinite;
+    background: linear-gradient(45deg, #ff6b9d, #ffa726, #ff9800, #e91e63);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bounce-birthday 2s ease-in-out infinite, gradient-shift 3s ease-in-out infinite;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-weight: bold !important;
+  }
+
+  /* 生日描述文字 */
+  .vp-blog-hero-description {
+    color: #d81b60 !important;
+    font-weight: 600 !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* 生日主题导航栏 */
+  .navbar {
+    background: linear-gradient(90deg, 
+      rgba(255, 182, 193, 0.9) 0%,
+      rgba(255, 192, 203, 0.9) 50%,
+      rgba(255, 182, 193, 0.9) 100%
+    ) !important;
+  }
+
+  /* 文章卡片生日装饰 */
+  .blog-article-item {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #ff6b9d, #ffa726, #e91e63) border-box;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .blog-article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.3);
+  }
+
+  /* 页脚生日主题 */
+  .vp-footer {
+    background: linear-gradient(45deg, 
+      rgba(255, 182, 193, 0.1) 0%,
+      rgba(255, 192, 203, 0.1) 100%
+    ) !important;
+  }
+
+  /* 特殊的生日祝福横幅 */
+  .birthday-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #ff6b9d, #ffa726, #e91e63, #ff6b9d);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease-in-out infinite;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+
+  .birthday-banner::before {
+    content: '🎉';
+    margin-right: 10px;
+    animation: bounce-birthday 1s ease-in-out infinite;
+  }
+
+  .birthday-banner::after {
+    content: '🎂';
+    margin-left: 10px;
+    animation: bounce-birthday 1s ease-in-out infinite 0.5s;
+  }
+}
+
+/* ==============================
+   📱 移动端适配
+   ============================== */
+
+@media (max-width: 768px) {
+  body.birthday-mode {
+    .vp-blog-hero::after {
+      font-size: 1.5rem;
+      top: 25%;
+    }
+    
+    .vp-blog-hero-title {
+      font-size: 2rem !important;
+    }
+  }
+}
+
+/* ==============================
+   🎨 倒计时组件样式增强
+   ============================== */
+
+/* 倒计时容器过渡动画 */
+#countdown-container {
+  transition: all 0.5s ease;
+}
+
+/* 生日模式下的倒计时容器样式 */
+body.birthday-mode #countdown-container {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 50%, #e91e63 100%) !important;
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4) !important;
+}

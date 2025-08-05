@@ -1,8 +1,16 @@
-// you can change colors here
+// 🎂 生日主题色彩配置 🎂
+$theme-color: #ff6b9d;
+
 .vp-blog-hero-title {
-    color: #000 !important;
+    background: linear-gradient(45deg, #ff6b9d, #ffa726, #ff9800, #e91e63) !important;
+    background-size: 200% 200% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: bold !important;
 }
 
 .vp-blog-hero-description {
-    color: #000!important;
+    color: #d81b60 !important;
+    font-weight: 600 !important;
 }
