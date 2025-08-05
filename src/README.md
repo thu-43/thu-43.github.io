@@ -3,7 +3,7 @@ home: true
 layout: Blog
 icon: house
 title: THU自43的温馨博客
-bgImage: assets/images/background.jpg
+bgImage: assets/images/lj-bg.jpg
 heroText: 欢迎来到THU自43
 tagline: 记录我们一起走过的美好时光
 projects:
