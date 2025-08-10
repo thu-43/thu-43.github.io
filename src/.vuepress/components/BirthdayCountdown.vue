@@ -1,7 +1,8 @@
 <template>
   <div class="birthday-countdown">
     <div class="countdown-header">
-      <h2>🎂 李锦生日倒计时 🎂</h2>
+      <h2 v-if="!isBirthday">🎂 {{ nextName }} 生日倒计时 🎂</h2>
+      <h2 v-else>🎂 今天是 {{ todayNamesText }} 的生日 🎂</h2>
     </div>
     <div class="countdown-display" v-if="!isBirthday">
       <div class="time-unit">
@@ -22,12 +23,12 @@
       </div>
     </div>
     <div class="birthday-celebration" v-else>
-      <h2 class="celebration-text">🎉 生日快乐！李锦同学！🎉</h2>
+      <h2 class="celebration-text">🎉 生日快乐！{{ todayNamesText }}！🎉</h2>
       <div class="fireworks">🎆🎇✨🎊</div>
     </div>
     <div class="countdown-message">
-      <p v-if="!isBirthday">距离李锦同学的生日还有：</p>
-      <p v-else>今天是李锦同学的生日！🎂</p>
+      <p v-if="!isBirthday">距离 {{ nextName }} 的生日还有：</p>
+      <p v-else>今天是 {{ todayNamesText }} 的生日！🎂</p>
     </div>
   </div>
 </template>
@@ -42,13 +43,18 @@ export default {
       minutes: 0,
       seconds: 0,
       isBirthday: false,
-      targetDate: new Date('2025-08-06T00:00:00').getTime(),
-      timer: null
+      targetDate: 0,
+      timer: null,
+      entries: [], // { name, month, day }
+      nextName: '同学',
+      todayNamesText: '同学'
     }
   },
   mounted() {
-    this.updateCountdown();
-    this.timer = setInterval(this.updateCountdown, 1000);
+    this.loadCSV().then(() => {
+      this.tick();
+      this.timer = setInterval(this.tick, 1000);
+    });
   },
   beforeUnmount() {
     if (this.timer) {
@@ -56,8 +62,79 @@ export default {
     }
   },
   methods: {
+    async loadCSV() {
+      try {
+        const res = await fetch('/data/birthday.csv', { cache: 'no-cache' });
+        const text = await res.text();
+        this.entries = this.parseCSV(text);
+      } catch (e) {
+        console.error('加载生日CSV失败: ', e);
+        this.entries = [];
+      }
+    },
+    parseCSV(text) {
+      const lines = text.trim().split(/\r?\n/);
+      const out = [];
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        const parts = line.split(',');
+        if (parts.length < 2) continue;
+        const name = parts[0].trim();
+        const date = parts[1].trim();
+        const m = date.match(/^(\d{4})[./-](\d{2})[./-](\d{2})$/);
+        if (!m) continue;
+        const month = parseInt(m[2], 10);
+        const day = parseInt(m[3], 10);
+        out.push({ name, month, day });
+      }
+      return out;
+    },
+    getTodayNames(today, entries) {
+      const m = today.getMonth() + 1;
+      const d = today.getDate();
+      return entries.filter(e => e.month === m && e.day === d).map(e => e.name);
+    },
+    getNextBirthday(today, entries) {
+      const year = today.getFullYear();
+      let best = null;
+      let bestTime = Infinity;
+      for (const e of entries) {
+        let target = new Date(year, e.month - 1, e.day, 0, 0, 0, 0);
+        if (target.getTime() < today.getTime()) {
+          target = new Date(year + 1, e.month - 1, e.day, 0, 0, 0, 0);
+        }
+        const diff = target.getTime() - today.getTime();
+        if (diff < bestTime) {
+          bestTime = diff;
+          best = { name: e.name, target };
+        }
+      }
+      return best;
+    },
+    tick() {
+      if (!this.entries.length) return;
+      const now = new Date();
+      const todays = this.getTodayNames(now, this.entries);
+      if (todays.length) {
+        this.isBirthday = true;
+        this.todayNamesText = todays.join('、');
+        // 倒计时到当天结束，仅用于隐藏数字显示
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+        this.targetDate = endOfDay.getTime();
+      } else {
+        const next = this.getNextBirthday(now, this.entries);
+        if (next) {
+          this.isBirthday = false;
+          this.nextName = next.name;
+          this.targetDate = next.target.getTime();
+        }
+      }
+      this.updateCountdown();
+    },
     updateCountdown() {
-      const now = new Date().getTime();
+      if (!this.targetDate) return;
+      const now = Date.now();
       const distance = this.targetDate - now;
       
       if (distance > 0) {
@@ -65,13 +142,9 @@ export default {
         this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        this.isBirthday = false;
       } else {
-        // 生日当天显示庆祝效果
-        this.isBirthday = true;
-        if (this.timer) {
-          clearInterval(this.timer);
-        }
+        // 到达目标点后，下一轮tick会重算状态
+        this.days = 0; this.hours = 0; this.minutes = 0; this.seconds = 0;
       }
     }
   }

@@ -2,66 +2,71 @@
 home: true
 layout: Blog
 icon: house
-title: THU自43的温馨博客
-bgImage: assets/images/background.jpg
-heroText: 欢迎来到THU自43
-tagline: 记录我们一起走过的美好时光
+title: 🎂 李锦生日快乐！
+heroImage: https://mmbiz.qpic.cn/sz_mmbiz_jpg/I1BdLrQ4FMC5icwibQ3a3rc4U9ZGBPJItIiaUtoGZnCcGIpxH4ib6hCK9V7g7qjojlJAShMLy6au8uWbvByPQQyZdQ/640?wx_fmt=jpeg&watermark=1&tp=wxpic&wxfrom=5&wx_lazy=1
+bgImage: https://mmbiz.qpic.cn/sz_mmbiz_jpg/I1BdLrQ4FMC5icwibQ3a3rc4U9ZGBPJItIiaUtoGZnCcGIpxH4ib6hCK9V7g7qjojlJAShMLy6au8uWbvByPQQyZdQ/640?wx_fmt=jpeg&watermark=1&tp=wxpic&wxfrom=5&wx_lazy=1
+heroText: 🎉✨ 生日快乐 · 李锦 ✨🎉
+heroFullScreen: true
+tagline: 愿你的每一天都如今日般闪耀，愿你的笑容永远如阳光般灿烂！🎂🎈🌟
 projects:
+  - icon: birthday-cake
+    name: 🎂 生日专题
+    desc: 李锦同学的生日祝福合集，满满的爱与祝福
+    link: /人物/2025-08-06-lj.html
+
   - icon: user-group
-    name: 人物志
-    desc: 记录班级里每个闪耀的个体
-    link: /人物/
+    name: 🎉 班级祝福
+    desc: 来自THU自43全体同学的温暖祝福
+    link: /人物/2025-08-06-lj.html#🎤-同学们的温暖祝福
 
   - icon: heart
-    name: 班级生活
+    name: ✨ 美好回忆
     desc: 记录我们一起度过的美好时光
     link: /班级生活/
 
-  - icon: users
-    name: 党团活动
-    desc: 青春路上的精神追求与成长足迹
-    link: /党团活动/
+  - icon: gift
+    name: 🎁 特别惊喜
+    desc: 为生日女孩准备的特别礼物和惊喜
+    link: /人物/
 
-  - icon: tool
-    name: 实用工具
-    desc: 学习生活中的便利小工具
-    link: /实用工具/
+  - icon: camera
+    name: 📸 生日相册
+    desc: 记录这个特殊日子的精彩瞬间
+    link: /班级生活/
 
-footer: THU自43 - 一起记录美好时光
+  - icon: star
+    name: 🌟 闪耀时刻
+    desc: 李锦同学的高光时刻集锦
+    link: /人物/2025-08-06-lj.html
+
+footer: 🎂 THU自43全体同学祝李锦生日快乐！🎉
 ---
 
 <!-- 生日倒计时 -->
-<div id="countdown-container" style="background: linear-gradient(135deg, #3498db 0%, #2c3e50 50%, #34495e 100%); color: white; text-align: center; padding: 20px; margin: 20px 0; border-radius: 15px; box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);">
-  <h2 id="countdown-title" style="font-size: 1.6rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🎂 生日倒计时</h2>
-  <div id="countdown-display" style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap;">
+<div style="background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 50%, #e91e63 100%); color: white; text-align: center; padding: 20px; margin: 20px 0; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);">
+  <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🎂 李锦生日倒计时 🎂</h2>
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap;">
     <div style="background: rgba(255,255,255,0.2); border-radius: 12px; padding: 15px 20px; min-width: 80px;">
-      <span id="days" style="display: block; font-size: 2rem; font-weight: bold;">0</span>
+      <span style="display: block; font-size: 2rem; font-weight: bold;">1</span>
       <span style="display: block; font-size: 0.9rem; margin-top: 5px;">天</span>
     </div>
     <div style="background: rgba(255,255,255,0.2); border-radius: 12px; padding: 15px 20px; min-width: 80px;">
-      <span id="hours" style="display: block; font-size: 2rem; font-weight: bold;">0</span>
+      <span style="display: block; font-size: 2rem; font-weight: bold;">0</span>
       <span style="display: block; font-size: 0.9rem; margin-top: 5px;">时</span>
     </div>
     <div style="background: rgba(255,255,255,0.2); border-radius: 12px; padding: 15px 20px; min-width: 80px;">
-      <span id="minutes" style="display: block; font-size: 2rem; font-weight: bold;">0</span>
+      <span style="display: block; font-size: 2rem; font-weight: bold;">0</span>
       <span style="display: block; font-size: 0.9rem; margin-top: 5px;">分</span>
     </div>
     <div style="background: rgba(255,255,255,0.2); border-radius: 12px; padding: 15px 20px; min-width: 80px;">
-      <span id="seconds" style="display: block; font-size: 2rem; font-weight: bold;">0</span>
+      <span style="display: block; font-size: 2rem; font-weight: bold;">0</span>
       <span style="display: block; font-size: 0.9rem; margin-top: 5px;">秒</span>
     </div>
   </div>
-  <div id="birthday-celebration" style="display: none; padding: 20px 0;">
-    <h2 id="birthday-celebration-text" style="font-size: 2.2rem; margin-bottom: 20px;">🎉 生日快乐！🎉</h2>
-    <div style="font-size: 3rem;">🎆🎇✨🎊</div>
-  </div>
-  <p id="countdown-message" style="margin-top: 15px; font-size: 1.1rem;">加载中…</p>
+  <p style="margin-top: 15px; font-size: 1.1rem;">距离李锦同学的生日还有1天！</p>
 </div>
 
-<!-- 生日内容区域 - 默认隐藏 -->
-<div id="birthday-content" style="display: none;">
-
-## 🎊 生日快乐！🎊
+## 🎊 生日快乐，李锦！🎊
 
 <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 192, 203, 0.2) 50%, rgba(255, 182, 193, 0.1) 100%); border-radius: 20px; margin: 20px 0; box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);">
 
@@ -71,7 +76,7 @@ footer: THU自43 - 一起记录美好时光
 
 **🎂 愿你的笑容如蛋糕般甜蜜**  
 **🎈 愿你的梦想如气球般飞翔**  
-**✨愿你的未来如星光般闪耀**  
+**✨ 愿你的未来如星光般闪耀**  
 **🌈 愿你的人生如彩虹般绚烂**
 
 </div>
@@ -85,7 +90,7 @@ footer: THU自43 - 一起记录美好时光
 ### 🎵 生日歌
 *Happy Birthday to You*  
 *Happy Birthday to You*  
-*Happy Birthday Dear You*  
+*Happy Birthday Dear 李锦*  
 *Happy Birthday to You* 🎶
 
 </div>
@@ -115,27 +120,5 @@ footer: THU自43 - 一起记录美好时光
 **🎉 愿这个生日成为你人生中最美好的回忆之一！🎉**
 
 *—— 来自THU自43全体同学的真挚祝福*
-
-</div>
-
-</div>
-
-<!-- 正常内容区域 - 默认显示 -->
-<div id="normal-content">
-
-## 👋 欢迎来到THU自43
-
-这里是我们班级的小天地，记录着我们一起走过的美好时光。
-
-### 🌟 最新动态
-
-- 📚 **学习小组** - 大家一起进步，共同成长
-- 🏃‍♂️ **体育活动** - 挥洒汗水，增进友谊  
-- 🎭 **文娱活动** - 展现才华，释放青春活力
-- 🤝 **志愿服务** - 奉献爱心，回馈社会
-
-### 📖 班级故事
-
-每个人都有自己独特的故事，每段经历都值得被记录。在这里，我们分享彼此的成长足迹，见证友谊的力量。
 
 </div>
