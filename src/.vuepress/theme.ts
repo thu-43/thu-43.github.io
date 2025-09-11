@@ -24,12 +24,12 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: '🎂 THU自43全体同学祝李锦生日快乐！🎉',
+  footer: '© 2025 THU自43 | 记录我们的青春时光',
   displayFooter: true,
 
   // 博客相关
   blog: {
-    description: '🎉 分享、记录自43小家庭的日常！今天是李锦同学的生日！',
+    description: '🎉 分享、记录自43小家庭的日常！',
     intro: '/intro.html',
     medias: {
       BiliBili: 'https://space.bilibili.com/450907489',
