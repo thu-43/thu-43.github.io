@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
 function initBirthdayCommentTheme() {
   // 添加生日主题装饰
   addBirthdayDecorations();
-  
+
   // 添加评论动画效果
   addCommentAnimations();
-  
+
   // 添加生日彩蛋效果
   addBirthdayEasterEggs();
 }
@@ -39,16 +39,16 @@ function addBirthdayDecorations() {
       z-index: 1;
       overflow: hidden;
     `;
-    
+
     // 添加飘落的生日表情符号
     const emojis = ['🎂', '🎉', '🎈', '✨', '🎁', '🌟', '💝', '🎊'];
-    
+
     setInterval(() => {
-      if (Math.random() < 0.3) { // 30% 概率生成新表情符号
+      if (Math.random() < 0.3) {  // 30% 概率生成新表情符号
         createFallingEmoji(decorationContainer, emojis);
       }
     }, 2000);
-    
+
     giscusContainer.style.position = 'relative';
     giscusContainer.appendChild(decorationContainer);
   }
@@ -65,7 +65,7 @@ function createFallingEmoji(container, emojis) {
     animation: birthday-fall ${Math.random() * 3 + 4}s linear forwards;
     opacity: ${Math.random() * 0.5 + 0.5};
   `;
-  
+
   // 添加CSS动画
   if (!document.querySelector('#birthday-fall-animation')) {
     const style = document.createElement('style');
@@ -84,9 +84,9 @@ function createFallingEmoji(container, emojis) {
     `;
     document.head.appendChild(style);
   }
-  
+
   container.appendChild(emoji);
-  
+
   // 清理过期元素
   setTimeout(() => {
     if (emoji.parentNode) {
@@ -106,7 +106,7 @@ function addCommentAnimations() {
             animation: birthday-comment-appear 0.8s ease-out;
             transform-origin: center top;
           `;
-          
+
           // 添加CSS动画
           if (!document.querySelector('#birthday-comment-animation')) {
             const style = document.createElement('style');
@@ -132,31 +132,28 @@ function addCommentAnimations() {
       });
     });
   });
-  
+
   const giscusFrame = document.querySelector('.giscus-frame');
   if (giscusFrame) {
-    observer.observe(giscusFrame, {
-      childList: true,
-      subtree: true
-    });
+    observer.observe(giscusFrame, {childList: true, subtree: true});
   }
 }
 
 function addBirthdayEasterEggs() {
   // 检测特定关键词并添加特效
-  const birthdayKeywords = ['生日快乐', '祝福', '特拉', 'happy birthday', '🎂', '🎉'];
-  
+  const birthdayKeywords =
+      ['生日快乐', '祝福', '特拉', 'happy birthday', '🎂', '🎉'];
+
   const checkForKeywords = () => {
     const comments = document.querySelectorAll('.gsc-comment-content');
     comments.forEach(comment => {
       const text = comment.textContent.toLowerCase();
-      const hasKeyword = birthdayKeywords.some(keyword => 
-        text.includes(keyword.toLowerCase())
-      );
-      
+      const hasKeyword = birthdayKeywords.some(
+          keyword => text.includes(keyword.toLowerCase()));
+
       if (hasKeyword && !comment.classList.contains('birthday-enhanced')) {
         comment.classList.add('birthday-enhanced');
-        
+
         // 添加特殊效果
         const sparkle = document.createElement('div');
         sparkle.innerHTML = '✨';
@@ -168,10 +165,10 @@ function addBirthdayEasterEggs() {
           animation: birthday-sparkle 2s ease-in-out infinite;
           pointer-events: none;
         `;
-        
+
         comment.style.position = 'relative';
         comment.appendChild(sparkle);
-        
+
         // 添加CSS动画
         if (!document.querySelector('#birthday-sparkle-animation')) {
           const style = document.createElement('style');
@@ -193,10 +190,10 @@ function addBirthdayEasterEggs() {
       }
     });
   };
-  
+
   // 定期检查新评论
   setInterval(checkForKeywords, 3000);
-  checkForKeywords(); // 初始检查
+  checkForKeywords();  // 初始检查
 }
 
 // 添加鼠标悬停效果
@@ -216,10 +213,10 @@ document.addEventListener('mouseover', function(e) {
         animation: birthday-hover-effect 0.5s ease-out forwards;
         pointer-events: none;
       `;
-      
+
       comment.style.position = 'relative';
       comment.appendChild(effect);
-      
+
       // 添加CSS动画
       if (!document.querySelector('#birthday-hover-animation')) {
         const style = document.createElement('style');
@@ -238,7 +235,7 @@ document.addEventListener('mouseover', function(e) {
         `;
         document.head.appendChild(style);
       }
-      
+
       setTimeout(() => {
         if (effect.parentNode) {
           effect.remove();
