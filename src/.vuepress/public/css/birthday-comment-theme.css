@@ -1,0 +1,247 @@
+/* 生日主题评论区样式 */
+
+/* 评论区容器样式 */
+.giscus {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 15px 35px rgba(253, 121, 168, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加闪光效果 */
+.giscus::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: birthday-shine 4s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes birthday-shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* 评论区标题装饰 */
+.giscus-frame {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  border: 2px solid rgba(253, 121, 168, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* 评论输入框样式 */
+.giscus-frame textarea {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 234, 167, 0.3));
+  border: 2px solid #fd79a8;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: 'Microsoft YaHei', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.giscus-frame textarea:focus {
+  border-color: #e84393;
+  box-shadow: 0 0 20px rgba(232, 67, 147, 0.3);
+  transform: translateY(-2px);
+}
+
+/* 评论按钮样式 */
+.giscus-frame button {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(232, 67, 147, 0.3);
+}
+
+.giscus-frame button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(232, 67, 147, 0.4);
+  background: linear-gradient(135deg, #e84393, #d63031);
+}
+
+/* 评论卡片样式 */
+.giscus-frame .gsc-comment {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 182, 193, 0.2));
+  border: 1px solid rgba(253, 121, 168, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.giscus-frame .gsc-comment:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(253, 121, 168, 0.2);
+}
+
+/* 评论卡片悬停效果 */
+.giscus-frame .gsc-comment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.giscus-frame .gsc-comment:hover::before {
+  left: 100%;
+}
+
+/* 用户头像美化 */
+.giscus-frame .gsc-comment .gsc-comment-author-avatar img {
+  border: 3px solid #fd79a8;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+  transition: all 0.3s ease;
+}
+
+.giscus-frame .gsc-comment .gsc-comment-author-avatar img:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(253, 121, 168, 0.4);
+}
+
+/* 用户名样式 */
+.giscus-frame .gsc-comment .gsc-comment-author {
+  color: #e84393;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(232, 67, 147, 0.3);
+}
+
+/* 评论内容样式 */
+.giscus-frame .gsc-comment .gsc-comment-content {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  border-left: 4px solid #fd79a8;
+}
+
+/* 表情反应按钮 */
+.giscus-frame .gsc-reactions button {
+  background: linear-gradient(135deg, rgba(255, 234, 167, 0.8), rgba(255, 182, 193, 0.8));
+  border: 1px solid #fd79a8;
+  border-radius: 20px;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.giscus-frame .gsc-reactions button:hover {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+}
+
+/* 生日装饰元素 */
+.giscus::after {
+  content: '🎂✨🎉🎈';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  z-index: 3;
+  animation: birthday-float 3s ease-in-out infinite;
+}
+
+@keyframes birthday-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* 添加生日祝福背景图案 */
+.giscus {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 234, 167, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(253, 121, 168, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 182, 193, 0.2) 0%, transparent 50%);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .giscus {
+    padding: 15px;
+    margin: 20px 0;
+  }
+  
+  .giscus-frame .gsc-comment {
+    padding: 15px;
+  }
+  
+  .giscus::after {
+    font-size: 1rem;
+    top: 5px;
+    right: 10px;
+  }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .giscus {
+    background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #74b9ff 100%);
+  }
+  
+  .giscus-frame {
+    background: rgba(45, 52, 54, 0.95);
+    border-color: rgba(116, 185, 255, 0.3);
+  }
+  
+  .giscus-frame .gsc-comment {
+    background: linear-gradient(135deg, rgba(45, 52, 54, 0.95), rgba(116, 185, 255, 0.1));
+    border-color: rgba(116, 185, 255, 0.2);
+    color: #ddd;
+  }
+  
+  .giscus-frame .gsc-comment-content {
+    background: rgba(45, 52, 54, 0.8);
+    border-left-color: #74b9ff;
+    color: #ddd;
+  }
+}
+
+/* 评论区标题装饰 */
+.comment-section-header {
+  text-align: center;
+  margin: 30px 0 20px 0;
+  position: relative;
+}
+
+.comment-section-header::before {
+  content: '💝 留下你的生日祝福 💝';
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e84393;
+  text-shadow: 2px 2px 4px rgba(232, 67, 147, 0.3);
+  margin-bottom: 10px;
+  animation: birthday-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes birthday-glow {
+  from { 
+    text-shadow: 2px 2px 4px rgba(232, 67, 147, 0.3), 0 0 20px rgba(253, 121, 168, 0.5); 
+  }
+  to { 
+    text-shadow: 2px 2px 4px rgba(232, 67, 147, 0.3), 0 0 30px rgba(253, 121, 168, 0.8); 
+  }
+}

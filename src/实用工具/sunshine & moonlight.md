@@ -5,7 +5,7 @@ title: Sunshine & Moonlight
 # 这是页面的图标
 icon: laptop
 # 这是侧边栏的顺序
-order: 1
+order: 3
 # 设置作者
 cover: "https://cloud.tsinghua.edu.cn/f/d4d9c026d66b400f8e1f/?dl=1"
 author: 串子
