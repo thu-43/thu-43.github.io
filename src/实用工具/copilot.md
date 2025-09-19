@@ -24,15 +24,21 @@ tag:
 star: false
 ---
 # github copilot
-![](https://cloud.tsinghua.edu.cn/f/9f1f76c21f1a4b99b11c/?dl=1)
-想要体验各种最新模型？
-![](https://cloud.tsinghua.edu.cn/f/5ebd11963c4a432db045/?dl=1)
-想要更集成的ai coding体验？
-![更方便的对话窗口&代码补全](https://cloud.tsinghua.edu.cn/f/962377f286c848f7aab6/?dl=1)
-那就来看看~~并白嫖~~**github copilot**吧！
+<div align="center">
+   <img src="https://cloud.tsinghua.edu.cn/f/9f1f76c21f1a4b99b11c/?dl=1" alt="想要体验各种最新模型？">
+   <p>想要体验各种最新模型？</p>
+   <img src="https://cloud.tsinghua.edu.cn/f/5ebd11963c4a432db045/?dl=1" alt="想要更集成的ai coding体验？">
+   <p>想要更集成的ai coding体验？</p>
+   <img src="https://cloud.tsinghua.edu.cn/f/962377f286c848f7aab6/?dl=1" alt="更方便的对话窗口&代码补全">
+   <p>更方便的对话窗口&代码补全</p>
+</div>
 
->[!note]
->在通过 github 教育认证后，可以免费使用 10 刀每月的 copilot pro 订阅+4 刀每月的 github pro 订阅（为期两年，两年学生认证到期后可重新认证续期）
+那就来看看 ~~并白嫖~~ **GitHub Copilot** 吧！
+
+:::note
+在通过 github 教育认证后，可以免费使用 10 刀每月的 copilot pro 订阅+4 刀每月的 github pro 订阅（为期两年，两年学生认证到期后可重新认证续期）
+:::
+
 ## 1.准备工作
 首先用**学生邮箱**注册一个 github 账号（已经有 github 号的同学可以添加学生邮箱，并设置成首选）
 然后将个人主页按下图模板设置好：
@@ -41,24 +47,31 @@ star: false
 然后需要设置双重验证，在手机上下载 Microsoft Authenticator（应用商店搜索即可）
 在 github 的 password and authentication 栏目中（就在 payment information 下面），在 Two-factor methods 下选择**Authenticator app**，按照网页要求进行设置即可
 ![双重验证](https://cloud.tsinghua.edu.cn/f/3d4a25df739b4a66a4fc/?dl=1)
->[!warning]
->这一步会生成账户的恢复代码，注意留存好
+
+:::warning
+这一步会生成账户的恢复代码，注意留存好
+:::
+
 ## 2.学生认证
->[!note]
->新注册的 github 账号可能会认证失败，稍等几天就好
+
+:::note
+新注册的 github 账号可能会认证失败，稍等几天就好
+:::
 
 >认证过程中记得关掉代理，若在校外需挂学校 VPN，github 会通过网络定位你是不是在校内
 
 来到Billing and licensing下的Education benefits
 ![入口](https://cloud.tsinghua.edu.cn/f/4d1e24f3f312493ebc54/?dl=1)
 进入后按指示操作即可
->[!note]
->github会根据学生邮箱自动选择学校
->之后会要求选择用什么做证明，选第一项即可，学生证是最好的证明
->如果学生证的中文下没有对应的英文，建议自行补充（用便利贴粘一下）
+:::note
+github会根据学生邮箱自动选择学校
+之后会要求选择用什么做证明，选第一项即可，学生证是最好的证明
+如果学生证的中文下没有对应的英文，建议自行补充（用便利贴粘一下）
+:::
 
->[!warning]
->拍照不允许使用虚拟摄像机
+:::warning
+拍照不允许使用虚拟摄像机
+:::
 
 如果顺利，大概一天就会通过申请
 

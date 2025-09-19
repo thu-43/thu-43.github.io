@@ -92,6 +92,11 @@ star: true
 
 >[!note]
 >安装了NOD32杀毒软件的同学需要在防火墙中将Sunshine用到的端口打开
+
+:::note
+安装了NOD32杀毒软件的同学需要在防火墙中将Sunshine用到的端口打开
+:::
+
 ![默认端口](https://cloud.tsinghua.edu.cn/f/4a89c885695944348a7f/?dl=1)
 
 ### 3. 手机/电脑moonlight客户端使用
@@ -109,29 +114,35 @@ ipconfig
 电脑上会收到pin码配对的提示，输入即可
 #### 3.串流，启动！
 进入后打开**desktop**即可享受副屏体验，在**系统设置**中可调节显示器相对位置
->[!warning]
+
+:::warning
 如果出门在外串流，宿舍内的显示器也开着的话，应用可能会开到错误的显示器上，在客户端看不到
 这时候可以用**OBS Studio**使用**显示器采集**临时查看另一个显示器的画面（可在**steam**上免费下载）
-
+:::
 
 ### 4. ddns搞个域名(可选)
->[!note]
->DDNS，动态域名系统（Dynamic Domain Name System），它是在DNS的基础上发展起来的一种服务，用来解决动态IP地址的问题
 
->校园网并不提供静态IP地址，而是提供动态IP地址，这就意味着你的IP地址可能经常变动，一旦IP改变，那么DNS服务器解析自然就会失败，这样就没办法通过域名访问到服务器了
+:::note
+DDNS，动态域名系统（Dynamic Domain Name System），它是在DNS的基础上发展起来的一种服务，用来解决动态IP地址的问题
 
->那怎么办呢？DDNS来帮你！在DDNS客户端中配置好域名和IP的映射关系后，它会监控你的IP地址，一旦发现它变化了，就立刻通知DDNS服务器，最后DNS服务器会从DDNS服务器拿到映射关系，所以无论你的IP地址如何变动，通过你的DDNS域名可以随时访问家里的设备
+校园网并不提供静态IP地址，而是提供动态IP地址，这就意味着你的IP地址可能经常变动，一旦IP改变，那么DNS服务器解析自然就会失败，这样就没办法通过域名访问到服务器了
 
->简单来说，就是在公网上有了一个域名能直接映射到你的ip，
-![ddns示意](https://cloud.tsinghua.edu.cn/f/9e9d6dfdb36345b296d9/?dl=1)
+那怎么办呢？DDNS来帮你！在DDNS客户端中配置好域名和IP的映射关系后，它会监控你的IP地址，一旦发现它变化了，就立刻通知DDNS服务器，最后DNS服务器会从DDNS服务器拿到映射关系，所以无论你的IP地址如何变动，通过你的DDNS域名可以随时访问家里的设备
 
->[!note]
->校园网ipv4是公网ip，ipv6默认公网，两种ip均可使用
+简单来说，就是在公网上有了一个域名能直接映射到你的ip，
+:::
+![ddns示意](https://cloud.tsinghua.edu.cn/f/9e9d6dfdb36345b296d9?dl=1)
+
+:::note
+校园网ipv4是公网ip，ipv6默认公网，两种ip均可使用
+:::
 
 #### 1.域名免费申请
 [dynv6.com](https://dynv6.com/)
->[!note]
->注册时的人机验证需要科学上网
+
+:::note
+注册时的人机验证需要科学上网
+:::
 
 ![创建域名](https://cloud.tsinghua.edu.cn/f/c00b8d19048a44468948/?dl=1)
 ![](https://cloud.tsinghua.edu.cn/f/c81b46c01eba4e1ba58c/?dl=1)
