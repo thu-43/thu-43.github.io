@@ -131,6 +131,13 @@ export default hopeTheme({
   // 在这里配置主题提供的插件
   plugins: {
     blog: true,
+    comment: {
+      provider: 'Giscus',
+      repo: 'thu-43/thu-43.github.io',
+      repoId: 'R_kgDOPUsNFg',
+      category: 'General',
+      categoryId: 'DIC_kwDOPUsNFs4Cvn18',
+    },
 
     // 启用之前需安装 @waline/client
     // 警告:

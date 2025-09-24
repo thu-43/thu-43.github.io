@@ -1,4 +1,3 @@
-import {commentPlugin} from '@vuepress/plugin-comment'
 import {defineUserConfig} from 'vuepress';
 
 import theme from './theme.js';
@@ -18,16 +17,7 @@ export default defineUserConfig({
     ['script', {src: '/js/birthday-countdown.js', defer: true}]
   ],
   theme,
-  plugins: [
-    commentPlugin({
-      provider: 'Giscus',  // Artalk | Giscus | Waline | Twikoo
-      // 服务商特定选项
-      repo: 'thu-43/thu-43.github.io',     // Giscus 仓库
-      repoId: 'R_kgDOPUsNFg',              // Giscus 仓库ID
-      category: 'General',                 // Giscus 分类
-      categoryId: 'DIC_kwDOPUsNFs4Cvn18',  // Giscus 分类ID
-    }),
-  ],
+  plugins: [],
   // 和 PWA 一起启用
   // shouldPrefetch: false,
 });

@@ -36,6 +36,11 @@
 <script>
 export default {
   name: 'BirthdayCountdown',
+  props: {
+    name: { type: String, default: '' },
+    month: { type: [Number, String], default: null },
+    day: { type: [Number, String], default: null }
+  },
   data() {
     return {
       days: 0,
@@ -62,14 +67,33 @@ export default {
     }
   },
   methods: {
+    applyTargetOverride() {
+      const hasMonthDay = this.month != null && this.day != null;
+      if (hasMonthDay) {
+        const m = parseInt(this.month, 10);
+        const d = parseInt(this.day, 10);
+        const n = this.name && String(this.name).trim() ? String(this.name).trim() : '同学';
+        this.entries = [{ name: n, month: m, day: d }];
+        return;
+      }
+      if (this.name && String(this.name).trim()) {
+        const target = this.entries.find(e => e.name === this.name);
+        if (target) {
+          this.entries = [target];
+        }
+      }
+    },
     async loadCSV() {
       try {
         const res = await fetch('/data/birthday.csv', { cache: 'no-cache' });
         const text = await res.text();
         this.entries = this.parseCSV(text);
+        this.applyTargetOverride();
       } catch (e) {
         console.error('加载生日CSV失败: ', e);
+        // 即使 CSV 加载失败，也尽量使用传入的 props 进行回退
         this.entries = [];
+        this.applyTargetOverride();
       }
     },
     parseCSV(text) {

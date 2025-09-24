@@ -1,6 +1,7 @@
 // 通用生日倒计时功能 + 动态主题切换（基于CSV名单）
 (function() {
 const CSV_URL = '/data/birthday.csv';
+let OVERRIDE = null; // { name?: string, month?: number, day?: number }
 
 // 可选：手动覆盖今天是谁生日（优先级最高），格式：'姓名1,姓名2'
 const MANUAL_TODAY_OVERRIDE = '';
@@ -62,6 +63,26 @@ function getTodayBirthdays(today, entries) {
   }
   return list;
 }
+// 读取页面上的专属参数（如果有）
+function readOverride() {
+  const el = document.getElementById('countdown-container');
+  if (!el) return;
+  const name = (el.getAttribute('data-name') || '').trim();
+  const monthAttr = el.getAttribute('data-month');
+  const dayAttr = el.getAttribute('data-day');
+  if (monthAttr != null && dayAttr != null) {
+    const m = parseInt(monthAttr, 10);
+    const d = parseInt(dayAttr, 10);
+    if (!Number.isNaN(m) && !Number.isNaN(d) && m > 0 && d > 0) {
+      OVERRIDE = { name: name || '同学', month: m, day: d };
+      return;
+    }
+  }
+  if (name) {
+    OVERRIDE = { name };
+  }
+}
+
 
 // 渲染逻辑（与现有DOM结构兼容）
 function renderCountdown(target, now) {
@@ -143,13 +164,31 @@ let nextInfo = null;  // { name, month, day, target }
 
 async function loadData() {
   try {
+    // 先读取页面级专属参数
+    readOverride();
     const res = await fetch(CSV_URL, {cache: 'no-cache'});
     const text = await res.text();
     entries = parseCSV(text);
+    // 应用专属覆盖：
+    if (OVERRIDE) {
+      if (OVERRIDE.month != null && OVERRIDE.day != null) {
+        entries = [{ name: OVERRIDE.name || '同学', month: OVERRIDE.month, day: OVERRIDE.day }];
+      } else if (OVERRIDE.name) {
+        const t = entries.find(e => e.name === OVERRIDE.name);
+        if (t) entries = [t];
+      }
+    }
     tick();
     setInterval(tick, 1000);
   } catch (e) {
     console.error('加载生日CSV失败: ', e);
+    // CSV 加载失败时的回退：若提供了专属且包含月日，则仍可工作
+    readOverride();
+    if (OVERRIDE && OVERRIDE.month != null && OVERRIDE.day != null) {
+      entries = [{ name: OVERRIDE.name || '同学', month: OVERRIDE.month, day: OVERRIDE.day }];
+      tick();
+      setInterval(tick, 1000);
+    }
   }
 }
 
