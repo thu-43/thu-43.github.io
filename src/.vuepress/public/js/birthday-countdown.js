@@ -1,7 +1,7 @@
 // 通用生日倒计时功能 + 动态主题切换（基于CSV名单）
 (function() {
 const CSV_URL = '/data/birthday.csv';
-let OVERRIDE = null; // { name?: string, month?: number, day?: number }
+let OVERRIDE = null;  // { name?: string, month?: number, day?: number }
 
 // 可选：手动覆盖今天是谁生日（优先级最高），格式：'姓名1,姓名2'
 const MANUAL_TODAY_OVERRIDE = '';
@@ -74,12 +74,12 @@ function readOverride() {
     const m = parseInt(monthAttr, 10);
     const d = parseInt(dayAttr, 10);
     if (!Number.isNaN(m) && !Number.isNaN(d) && m > 0 && d > 0) {
-      OVERRIDE = { name: name || '同学', month: m, day: d };
+      OVERRIDE = {name: name || '同学', month: m, day: d};
       return;
     }
   }
   if (name) {
-    OVERRIDE = { name };
+    OVERRIDE = {name};
   }
 }
 
@@ -172,7 +172,11 @@ async function loadData() {
     // 应用专属覆盖：
     if (OVERRIDE) {
       if (OVERRIDE.month != null && OVERRIDE.day != null) {
-        entries = [{ name: OVERRIDE.name || '同学', month: OVERRIDE.month, day: OVERRIDE.day }];
+        entries = [{
+          name: OVERRIDE.name || '同学',
+          month: OVERRIDE.month,
+          day: OVERRIDE.day
+        }];
       } else if (OVERRIDE.name) {
         const t = entries.find(e => e.name === OVERRIDE.name);
         if (t) entries = [t];
@@ -185,7 +189,11 @@ async function loadData() {
     // CSV 加载失败时的回退：若提供了专属且包含月日，则仍可工作
     readOverride();
     if (OVERRIDE && OVERRIDE.month != null && OVERRIDE.day != null) {
-      entries = [{ name: OVERRIDE.name || '同学', month: OVERRIDE.month, day: OVERRIDE.day }];
+      entries = [{
+        name: OVERRIDE.name || '同学',
+        month: OVERRIDE.month,
+        day: OVERRIDE.day
+      }];
       tick();
       setInterval(tick, 1000);
     }
