@@ -6,8 +6,8 @@ export default defineUserConfig({
   base: '/',
 
   lang: 'zh-CN',
-  title: 'THU自43的温馨博客',
-  description: 'THU自43的温馨博客 - 记录我们一起走过的美好时光',
+  title: 'THU自43',
+  description: 'THU自43之家 - 记录我们一起走过的美好时光',
   head: [
     ['link', {rel: 'icon', href: '/assets/images/logo.png'}],
     ['link', {rel: 'shortcut icon', href: '/assets/images/logo.png'}],
